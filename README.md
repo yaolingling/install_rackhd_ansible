@@ -13,6 +13,7 @@ The script is used to finish the following tasks:
 * copy installation to other nodes.
 
 The script is executed before installing RackHD. Users can execute the following command to execute the script    
+	
 	/bin/bash pre_install.sh ips /root
 
 The script has two args,namely: ips and /root. `ips` is a text file which contains ip and password(root authority). For example, one line of the ips file: 10.62.60.52,123456.
@@ -46,7 +47,7 @@ The ansible script contains the following roles:
 
 * step 1: execute the shell script in ansible control node:
 
-	/bin/bash ips /root
+        /bin/bash pre_install.sh ips /root
 
 * step 2: change the hosts file of ansible: ~/etc/ansible/hosts
 
@@ -54,7 +55,7 @@ Note: promise that the ip list in hosts are consistent with ip list in `ips` fil
 
 * step 3: execute the ansible script in ansible control node to start installing RackHD
 
-	ansible-playbook install_rackhd.yml
+        ansible-playbook install_rackhd.yml
 
 * step 4: valiate if RackHD is installed successfully.
     
