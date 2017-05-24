@@ -1,0 +1,3 @@
+---
+- name: clone rackhd source code
+  shell: /bin/bash /root/installation/roles/cloneCode/files/cloneCode.sh {{github_account}}
