@@ -1,0 +1,7 @@
+---
+- name: install build tools
+  apt: pkg={{item}} state=installed
+  with_items:
+   - git
+   - build-essential
+  sudo: yes
