@@ -1,0 +1,16 @@
+---
+- name: create dir ~/src/npm
+  file: path=~/src/npm state=directory
+
+- name: change the npm prefix
+  shell: echo prefix=~/src/npm >> ~/.npmrc
+
+- name: install dependency
+  apt: pkg={{item}} state=installed
+  with_items:
+    - g++
+    - libkrb5-dev
+    - unzip
+
+- name: install dependencies for all repos
+  shell: /bin/bash /root/installation/roles/dependency/files/install_dependency.sh
