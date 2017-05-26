@@ -1,12 +1,11 @@
 #!/bin/bash
 # step 1: install ansible on control node
-:<<!
 echo "*******************  step 1: install ansible on control node"
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get -y  update
 sudo apt-get install -y ansible
-!
+
 #step 2: ssh all nodes without password
 echo "******************* step 2: ssh all nodes without password"
 i=0
@@ -25,7 +24,8 @@ do
    n=$(($n+1))
 done <$1
 
-yes "y" | ssh-keygen -f id_rsa -t rsa -N ''
+sudo apt-get install sshpass
+yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
 k=0
 for a in ${ips[@]};do
   echo $a
