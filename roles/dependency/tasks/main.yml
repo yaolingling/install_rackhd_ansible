@@ -1,9 +1,9 @@
 ---
-- name: create dir ~/src/npm
-  file: path=~/src/npm state=directory
+- name: create dir /home/vagrant/src/npm
+  file: path=/home/vagrant/src/npm state=directory
 
-- name: change the npm prefix
-  shell: echo prefix=~/src/npm >> ~/.npmrc
+#- name: change the npm prefix
+#  shell: echo prefix=~/src/npm >> ~/.npmrc
 
 - name: install dependency
   apt: pkg={{item}} state=installed
@@ -12,5 +12,37 @@
     - libkrb5-dev
     - unzip
 
-- name: install dependencies for all repos
-  shell: /bin/bash /root/installation/roles/dependency/files/install_dependency.sh
+#- name: npm install repos
+# shell: /bin/bash ./roles/dependency/files/install_dependency.sh
+- name: Npm install Repos
+  shell: npm install
+  args: 
+    chdir: /home/vagrant/src/{{ item }}
+  with_items: 
+    - on-tasks
+    - on-taskgraph
+    - on-http
+    - on-dhcp-proxy
+    - on-tftp
+    - on-syslog
+    - on-core
+
+- name: install repos link on-core
+  shell: npm link /home/vagrant/src/on-core
+  args:
+    chdir: /home/vagrant/src/{{ item }}
+  with_items: 
+    - on-tasks
+    - on-taskgraph
+    - on-http
+    - on-dhcp-proxy
+    - on-tftp
+    - on-syslog
+
+- name: install repos link on-tasks
+  shell: npm link /home/vagrant/src/on-tasks
+  args:
+    chdir: /home/vagrant/src/{{ item }}
+  with_items:
+    - on-taskgraph
+    - on-http

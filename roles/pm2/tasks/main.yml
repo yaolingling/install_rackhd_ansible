@@ -2,23 +2,10 @@
 - name: install pm2
   shell: npm install -g pm2
 
-- name: copy rackhd.yml to /root
-  copy: src=rackhd.yml dest=/root
-  sudo: yes
-
 - name: restart mongodb
   service: name=mongodb state=started
   sudo: yes
 
-- name: npm install
-  shell: npm install
-  args:
-    chdir: /root/src/on-http
-
-- name: /bin/bash install-swagger-ui.sh
-  shell: /bin/bash install-swagger-ui.sh
-  args:
-    chdir: /root/src/on-http/
-
 - name: start rackhd services
-  shell: /root/src/npm/bin/pm2 start /root/rackhd.yml
+  shell: ~/src/npm/bin/pm2 start ./roles/pm2/files/rackhd.yml
+  sudo: yes
