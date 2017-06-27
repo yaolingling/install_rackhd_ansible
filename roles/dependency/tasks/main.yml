@@ -12,8 +12,6 @@
     - libkrb5-dev
     - unzip
 
-#- name: npm install repos
-# shell: /bin/bash ./roles/dependency/files/install_dependency.sh
 - name: Npm install Repos
   shell: npm install
   args: 

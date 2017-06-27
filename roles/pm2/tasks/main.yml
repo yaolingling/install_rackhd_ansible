@@ -2,10 +2,13 @@
 - name: install pm2
   shell: npm install -g pm2
 
+#- name: copy rackhd.yml to /root
+ # copy: src=rackhd.yml dest=/root
+ # sudo: yes
+
 - name: restart mongodb
   service: name=mongodb state=started
   sudo: yes
 
-- name: start rackhd services
-  shell: ~/src/npm/bin/pm2 start ./roles/pm2/files/rackhd.yml
-  sudo: yes
+#- name: start rackhd services
+#  shell: sudo pm2 start /home/vagrant/rackhd-pm2-config.yml

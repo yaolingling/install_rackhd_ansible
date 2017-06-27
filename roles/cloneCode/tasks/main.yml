@@ -44,5 +44,5 @@
 
 - name: solve the problem that on-http cannot start
   shell: cd /home/vagrant/src/on-http/ && /bin/bash install-swagger-ui.sh
-#- name: clone rackhd source code
-#  shell: /bin/bash ./roles/cloneCode/files/cloneCode.sh {{github_account}}
+
+

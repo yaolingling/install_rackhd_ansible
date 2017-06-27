@@ -1,0 +1,3 @@
+- name: start rackhd services
+  shell: ~/src/npm/bin/pm2 start rackhd.yml
+  sudo: yes
