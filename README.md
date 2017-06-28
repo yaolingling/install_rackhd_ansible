@@ -15,14 +15,16 @@ Before ansible is used to install RackHD, some steps need to be done.
    
         sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
+* check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname> 
+      
+        127.0.0.1 localhost <hostname>
 
 
+## install_rackhd_ubuntu.yml
 
-## install_rackhd.yml
+The ansible script is used to install RackHD with source code in fresh ubuntu. User can execute the command to install RackHD:
 
-The ansible script is used to install RackHD with source code. User can execute the command to install RackHD:
-
-	ansible-playbook install_rackhd.yml
+	sudo ansible-playbook install_rackhd_ubuntu.yml
 
 The ansible script contains the following roles:
 
@@ -40,21 +42,20 @@ The ansible script contains the following roles:
 * config_file - create rackhd config file: config.json
 * static_files - wget static files to local
 * pm2 - install pm2 and start rackhd
+* start-rackhd - start RackHD
 
 ## how to install RacKHD with these scripts
 
-* step 1: execute the shell script in ansible control node:
-
-        /bin/bash pre_install.sh ips /root
-
-* step 2: change the hosts file of ansible: ~/etc/ansible/hosts
+* step 1: change the hosts file of ansible: ~/etc/ansible/hosts
 
 Note: promise that the ip list in hosts are consistent with ip list in `ips` file.
 
+* step 2: ssh these nodes defined in /etc/ansible/hosts without password.
+
 * step 3: execute the ansible script in ansible control node to start installing RackHD
 
-        ansible-playbook install_rackhd.yml
+        sudo ansible-playbook install_rackhd.yml
 
 * step 4: valiate if RackHD is installed successfully.
     
-        ~/src/npm/bin/pm2 status
+        sudo pm2 status
