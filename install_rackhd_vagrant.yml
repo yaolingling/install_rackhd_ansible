@@ -7,17 +7,8 @@
    github_account: "yaolingling"
    code_version: "release/2.1.0"
   roles:
-    #- apt
     - build
-    #- isc-dhcp-server
-    #- mongodb
-    #- rabbitmq-server
-    #- ipmitool
-    #- snmp
-    #- configNetwork
-    #- nodejs
     - cloneCode
     - dependency
-    #- config_file
     - static_files
     - pm2

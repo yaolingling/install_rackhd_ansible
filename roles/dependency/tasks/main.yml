@@ -2,9 +2,6 @@
 - name: create dir /home/vagrant/src/npm
   file: path=/home/vagrant/src/npm state=directory
 
-#- name: change the npm prefix
-#  shell: echo prefix=~/src/npm >> ~/.npmrc
-
 - name: install dependency
   apt: pkg={{item}} state=installed
   with_items:
