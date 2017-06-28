@@ -1,12 +1,15 @@
 # Install RackHD With Ansible 
 
-Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments. Ansible and shell scripts are used to install RackHD with source code. These scripts will be introduced.
+Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments. Ansible is used to install RackHD with source code on ubuntu and Vagrant.
 
-* http://docs.ansible.com/ansible/ -- Ansible Doc
+* ansible - http://docs.ansible.com/ansible/
+* Vagrant - https://www.vagrantup.com/
 
 ## Preparation
 
 Before ansible is used to install RackHD, some steps need to be done.
+
+set up RackHD on ubuntu,
 
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
 * ensure ssh these ips defined in "/etc/ansible/hosts"
@@ -20,9 +23,11 @@ Before ansible is used to install RackHD, some steps need to be done.
         127.0.0.1 localhost <hostname>
 
 
+There is no preparations for setting up RackHD on Vagrant
+
 ## install_rackhd_ubuntu.yml
 
-The ansible script is used to install RackHD with source code in fresh ubuntu. User can execute the command to install RackHD:
+The file is used to install RackHD with source code in fresh ubuntu. User can execute the command to install RackHD:
 
 	sudo ansible-playbook install_rackhd_ubuntu.yml
 
@@ -44,7 +49,16 @@ The ansible script contains the following roles:
 * pm2 - install pm2 and start rackhd
 * start-rackhd - start RackHD
 
-## how to install RacKHD with these scripts
+## install_rackhd_vagrant.yml
+
+The file is used to install RackHD in vagrant. The file shares the modules in folder'roles' with the yml,"install_rackhd_ubuntu.yml". The ansible script runs in Vagrant to install RackHD. Users can execute the command to set up RackHD which runs in vagrant box.
+   
+        sudo vagrant up dev_ansible
+
+
+## how to install RacKHD
+
+### For setting up RackHD which runs on frash ubuntu
 
 * step 1: change the hosts file of ansible: ~/etc/ansible/hosts
 
@@ -59,3 +73,15 @@ Note: promise that the ip list in hosts are consistent with ip list in `ips` fil
 * step 4: valiate if RackHD is installed successfully.
     
         sudo pm2 status
+
+#### For setting up RackHD which runs in vagrant box
+
+* step 1: set up a vagrant box used to install RackHD
+  
+       sudo vagrant up dev_ansible
+
+* step 2: check whether RackHD is installed successfully
+
+       sudo ssh dev_ansible
+       sudo su
+       pm2 status
