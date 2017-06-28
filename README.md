@@ -1,24 +1,20 @@
-# Install RackHD With Ansible
+# Install RackHD With Ansible 
 
 Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments. Ansible and shell scripts are used to install RackHD with source code. These scripts will be introduced.
 
 * http://docs.ansible.com/ansible/ -- Ansible Doc
 
-## pre_install.sh
+## Preparation
 
-The script is used to finish the following tasks:
+Before ansible is used to install RackHD, some steps need to be done.
 
-* install ansible in control node.
-* ssh all nodes without password.
-* copy installation to other nodes.
+* edit /etc/ansible/hosts, define hosts where RackHD will be installed.
+* ensure ssh these ips defined in "/etc/ansible/hosts"
+   yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
+   sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
-The script is executed before installing RackHD. Users can execute the following command to execute the script    
-	
-	/bin/bash pre_install.sh ips /root
 
-The script has two args,namely: ips and /root. `ips` is a text file which contains ip and password(root authority). For example, one line of the ips file: 10.62.60.52,123456.
 
-The second arg is the directory of installation.
 
 ## install_rackhd.yml
 

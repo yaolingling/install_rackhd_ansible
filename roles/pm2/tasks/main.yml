@@ -3,7 +3,7 @@
   shell: npm install -g pm2
 
 #- name: copy rackhd.yml to /root
- # copy: src=rackhd.yml dest=/root
+#  copy: src=rackhd.yml dest=/root
  # sudo: yes
 
 - name: restart mongodb
