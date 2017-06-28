@@ -11,8 +11,9 @@ Before ansible is used to install RackHD, some steps need to be done.
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
 * ensure ssh these ips defined in "/etc/ansible/hosts"
    
-   yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
-   sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
+        yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
+   
+        sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
 
 
