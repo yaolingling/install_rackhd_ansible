@@ -9,7 +9,7 @@ Ansible is an IT automation tool. It can configure systems, deploy software, and
 
 Before ansible is used to install RackHD, some steps need to be done.
 
-set up RackHD on ubuntu,
+Set up RackHD on ubuntu,
 
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
 * ensure ssh these ips defined in "/etc/ansible/hosts"
@@ -74,7 +74,7 @@ Note: promise that the ip list in hosts are consistent with ip list in `ips` fil
     
         sudo pm2 status
 
-#### For setting up RackHD which runs in vagrant box
+### For setting up RackHD which runs in vagrant box
 
 * step 1: set up a vagrant box used to install RackHD
   
