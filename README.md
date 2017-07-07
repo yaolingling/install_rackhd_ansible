@@ -14,6 +14,10 @@ Before ansible is used to install RackHD, some steps need to be done.
        sudo apt-get update
        sudo apt-get install ansible
 
+After ansible is installed, you can check if ansible is installed successfully.
+ 
+       ansible --version
+
 Set up RackHD on ubuntu,
 
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
