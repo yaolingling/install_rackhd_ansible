@@ -18,7 +18,7 @@ After ansible is installed, you can check if ansible is installed successfully.
  
        sudo ansible --version
 
-Set up RackHD on ubuntu,
+**Set up RackHD on ubuntu**,
 
 * Usually we setup a dedicated network for RackHD (we call it RackHD control network), the isc-dhcp-server should only work within this network and all RackHD controlled nodes should be put within this network as well.You need to ensure that the node has two network interfaces. Ubuntu 16.04 and Ubuntu 14.04 have different naming for network interfaces, we usually see eth0 and eth1 in Ubuntu 14.04, however enp0s3, enp0s8 in 16.04. In 16.04, the name has some relation with the real hardware config, so you may see other names.
 
@@ -48,7 +48,10 @@ Set up RackHD on ubuntu,
         127.0.0.1 localhost <hostname>
 
 
-There is no preparations for setting up RackHD on Vagrant
+**Set up RackHD in vagrant**, 
+
+You need to install [vagrant](https://www.vagrantup.com/) (version >= 1.8.0) and [VirturalBox](https://www.virtualbox.org/wiki/VirtualBox) (version: 4.3.X).
+
 
 ## install_rackhd_ubuntu.yml
 
