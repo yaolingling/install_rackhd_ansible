@@ -24,10 +24,10 @@ Set up RackHD on ubuntu,
 
         [vms]
         localhost
-        <node IP>
-        <node IP>
+        <node IP1>
+        <node IP2>
 
-* ensure ssh these ips defined in "/etc/ansible/hosts"
+* ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the second command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
    
         sudo yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
    
