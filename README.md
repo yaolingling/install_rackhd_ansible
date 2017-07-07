@@ -9,6 +9,11 @@ Ansible is an IT automation tool. It can configure systems, deploy software, and
 
 Before ansible is used to install RackHD, some steps need to be done.
 
+       sudo apt-get install software-properties-common
+       sudo apt-add-repository ppa:ansible/ansible 
+       sudo apt-get update
+       sudo apt-get install ansible
+
 Set up RackHD on ubuntu,
 
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
