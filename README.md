@@ -23,9 +23,9 @@ Set up RackHD on ubuntu,
 * edit /etc/ansible/hosts, define hosts where RackHD will be installed.
 * ensure ssh these ips defined in "/etc/ansible/hosts"
    
-        yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
+        sudo yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
    
-        sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
+        sudo sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
 * check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname> 
       
