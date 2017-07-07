@@ -20,7 +20,13 @@ After ansible is installed, you can check if ansible is installed successfully.
 
 Set up RackHD on ubuntu,
 
-* edit /etc/ansible/hosts, define hosts where RackHD will be installed.
+* edit "vi /etc/ansible/hosts", define hosts where RackHD will be installed. If you want to install RackHD in localhost and remote nodes. You can add the followings lines in '/etc/ansible/hosts'. 'vms' is defined in line 4 of the file 'install_rackhd_ubuntu.yml'.
+
+        [vms]
+        localhost
+        <node IP>
+        <node IP>
+
 * ensure ssh these ips defined in "/etc/ansible/hosts"
    
         sudo yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
