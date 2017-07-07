@@ -20,6 +20,8 @@ After ansible is installed, you can check if ansible is installed successfully.
 
 Set up RackHD on ubuntu,
 
+* Usually we setup a dedicated network for RackHD (we call it RackHD control network), the isc-dhcp-server should only work within this network and all RackHD controlled nodes should be put within this network as well.You need to ensure that the node has two network interfaces. Ubuntu 16.04 and Ubuntu 14.04 have different naming for network interfaces, we usually see eth0 and eth1 in Ubuntu 14.04, however enp0s3, enp0s8 in 16.04. In 16.04, the name has some relation with the real hardware config, so you may see other names.
+
 * edit "vi /etc/ansible/hosts", define hosts where RackHD will be installed. If you want to install RackHD in localhost and remote nodes. You can add the followings lines in '/etc/ansible/hosts'. 'vms' is defined in line 4 of the file 'install_rackhd_ubuntu.yml'.
 
         [vms]
