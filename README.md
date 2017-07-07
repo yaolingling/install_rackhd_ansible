@@ -27,11 +27,19 @@ Set up RackHD on ubuntu,
         <node IP1>
         <node IP2>
 
-* ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the second command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
+* ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the last command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
    
+        sudo apt-get install sshpass
+
         sudo yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
    
         sudo sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
+
+* check if ssh nodes defined in '/etc/ansible/hosts' without password, for example:
+
+        sudo ssh localhost
+        sudo ssh <node IP1>
+        sudo ssh <node IP2>
 
 * check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname> 
       
