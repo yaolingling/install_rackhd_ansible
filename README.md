@@ -41,7 +41,7 @@ Set up RackHD on ubuntu,
         sudo ssh <node IP1>
         sudo ssh <node IP2>
 
-* check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname> 
+* For every node defined in /etc/ansible/hosts, check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname>. You can execute the command 'hostname' to get hostame. 
       
         127.0.0.1 localhost <hostname>
 
