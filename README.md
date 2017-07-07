@@ -31,11 +31,13 @@ After ansible is installed, you can check if ansible is installed successfully.
 
 * ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the last command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
    
-        sudo apt-get install sshpass
+        sudo su
 
-        sudo yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
+        apt-get install sshpass
+
+        yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
    
-        sudo sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
+        sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
 * check if ssh nodes defined in '/etc/ansible/hosts' without password, for example:
 
