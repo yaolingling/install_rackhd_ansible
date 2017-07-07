@@ -16,7 +16,7 @@ Before ansible is used to install RackHD, some steps need to be done.
 
 After ansible is installed, you can check if ansible is installed successfully.
  
-       ansible --version
+       sudo ansible --version
 
 Set up RackHD on ubuntu,
 
