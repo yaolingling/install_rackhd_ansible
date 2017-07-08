@@ -29,21 +29,27 @@ After ansible is installed, you can check if ansible is installed successfully.
         <node IP1>
         <node IP2>
 
+* ensure ssh nodes defined in '/etc/ansible/hosts' with root. Commands below need to be executed on every node defined in the file '/etc/ansible/hosts'. If you can ssh nodes with root, you can skip this step.
+    
+        sudo passwd root        
+        sudo apt-get update
+        sudo apt-get install openssh-server
+
+Then "sudo vi /etc/ssh/sshd_config". In this file, change the line contains 'PermitRootLogin' to 'PermitRootLogin yes'. Finally, "sudo service ssh restart".
+
 * ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the last command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
-   
+
         sudo su
-
+        apt-get update
         apt-get install sshpass
-
         yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
-   
         sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
 * check if ssh nodes defined in '/etc/ansible/hosts' without password, for example:
 
-        sudo ssh localhost
-        sudo ssh <node IP1>
-        sudo ssh <node IP2>
+        sudo ssh root@localhost
+        sudo ssh root@<node IP1>
+        sudo ssh root@<node IP2>
 
 * For every node defined in /etc/ansible/hosts, check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname>. You can execute the command 'hostname' to get hostame. 
       
