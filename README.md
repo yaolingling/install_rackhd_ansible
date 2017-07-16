@@ -33,7 +33,7 @@ edit "vi /etc/ansible/hosts", define hosts where RackHD will be installed. If yo
         <node IP1>
         <node IP2>
 
-* Make sure that ssh root@<ip> without password
+* Make sure that ssh root@ip without password
  
 step 1: ensure ssh nodes defined in '/etc/ansible/hosts' with root. Commands below need to be executed on every node defined in the file '/etc/ansible/hosts'. If you can ssh nodes with root, you can skip this step.
     
