@@ -96,15 +96,15 @@ The file is used to install RackHD in vagrant. The file shares the modules in fo
 
 ### For setting up RackHD which runs on frash ubuntu
 
-* step 1: change the hosts file of ansible: ~/etc/ansible/hosts
+* step 1: change the hosts file of ansible: /etc/ansible/hosts
 
-Note: promise that the ip list in hosts are consistent with ip list in `ips` file.
+Note: promise that the ip list in hosts are consistent with ip list in the file `/etc/ansible/hosts`.
 
 * step 2: ssh these nodes defined in /etc/ansible/hosts without password.
 
 * step 3: execute the ansible script in ansible control node to start installing RackHD
 
-        sudo ansible-playbook install_rackhd.yml
+        sudo ansible-playbook install_rackhd_ubuntu.yml
 
 * step 4: valiate if RackHD is installed successfully.
     
