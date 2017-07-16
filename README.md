@@ -57,7 +57,7 @@ step 3: Check if ssh nodes defined in '/etc/ansible/hosts' without password, for
         sudo ssh root@<node IP1>
         sudo ssh root@<node IP2>
 
-* Add <hostname> in `/etc/hosts`
+* Add `hostname` in `/etc/hosts`
  
 For every node defined in /etc/ansible/hosts, check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname>. You can execute the command 'hostname' to get hostame. 
       
