@@ -20,16 +20,22 @@ After ansible is installed, you can check if ansible is installed successfully.
 
 **Set up RackHD on ubuntu**,
 
-* Usually we setup a dedicated network for RackHD (we call it RackHD control network), the isc-dhcp-server should only work within this network and all RackHD controlled nodes should be put within this network as well.You need to ensure that the node has two network interfaces. Ubuntu 16.04 and Ubuntu 14.04 have different naming for network interfaces, we usually see eth0 and eth1 in Ubuntu 14.04, however enp0s3, enp0s8 in 16.04. In 16.04, the name has some relation with the real hardware config, so you may see other names.
+* Make sure that there are two network interfaces.
+ 
+Usually we setup a dedicated network for RackHD (we call it RackHD control network), the isc-dhcp-server should only work within this network and all RackHD controlled nodes should be put within this network as well.You need to ensure that the node has two network interfaces. Ubuntu 16.04 and Ubuntu 14.04 have different naming for network interfaces, we usually see eth0 and eth1 in Ubuntu 14.04, however enp0s3, enp0s8 in 16.04. In 16.04, the name has some relation with the real hardware config, so you may see other names.
 
-* edit "vi /etc/ansible/hosts", define hosts where RackHD will be installed. If you want to install RackHD in localhost and remote nodes. You can add the followings lines in '/etc/ansible/hosts'. 'vms' is defined in line 4 of the file 'install_rackhd_ubuntu.yml'.
+* Config the nodes that needs to install RackHD.
+
+edit "vi /etc/ansible/hosts", define hosts where RackHD will be installed. If you want to install RackHD in localhost and remote nodes. You can add the followings lines in '/etc/ansible/hosts'. 'vms' is defined in line 4 of the file 'install_rackhd_ubuntu.yml'.
 
         [vms]
         localhost
         <node IP1>
         <node IP2>
 
-* ensure ssh nodes defined in '/etc/ansible/hosts' with root. Commands below need to be executed on every node defined in the file '/etc/ansible/hosts'. If you can ssh nodes with root, you can skip this step.
+* Make sure that ssh root@<ip> without password
+ 
+step 1: ensure ssh nodes defined in '/etc/ansible/hosts' with root. Commands below need to be executed on every node defined in the file '/etc/ansible/hosts'. If you can ssh nodes with root, you can skip this step.
     
         sudo passwd root        
         sudo apt-get update
@@ -37,7 +43,7 @@ After ansible is installed, you can check if ansible is installed successfully.
 
 Then "sudo vi /etc/ssh/sshd_config". In this file, change the line contains 'PermitRootLogin' to 'PermitRootLogin yes'. Finally, "sudo service ssh restart".
 
-* ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the last command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
+step 2: ensure ssh these ips defined in "/etc/ansible/hosts" without password. You need to replace the '<IP>' of the last command with the ip defined in the file 'install_rackhd_ubuntu.yml'. '<password>' needed to be replaced with the ssh password of this node.
 
         sudo su
         apt-get update
@@ -45,13 +51,15 @@ Then "sudo vi /etc/ssh/sshd_config". In this file, change the line contains 'Per
         yes "y" | ssh-keygen -f /root/.ssh/id_rsa -t rsa -N ''
         sshpass -p <password> ssh-copy-id -i /root/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@<IP>
 
-* check if ssh nodes defined in '/etc/ansible/hosts' without password, for example:
+step 3: Check if ssh nodes defined in '/etc/ansible/hosts' without password, for example:
 
         sudo ssh root@localhost
         sudo ssh root@<node IP1>
         sudo ssh root@<node IP2>
 
-* For every node defined in /etc/ansible/hosts, check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname>. You can execute the command 'hostname' to get hostame. 
+* Add <hostname> in `/etc/hosts`
+ 
+For every node defined in /etc/ansible/hosts, check the line which contains "127.0.0.1 localhost" in the file "/etc/hosts", add <hostname>. You can execute the command 'hostname' to get hostame. 
       
         127.0.0.1 localhost <hostname>
 
