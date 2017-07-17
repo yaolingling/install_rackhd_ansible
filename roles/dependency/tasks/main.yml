@@ -2,13 +2,6 @@
 - name: create dir /home/vagrant/src/npm
   file: path=/home/vagrant/src/npm state=directory
 
-- name: install dependency
-  apt: pkg={{item}} state=installed
-  with_items:
-    - g++
-    - libkrb5-dev
-    - unzip
-
 - name: Npm install Repos
   shell: npm install
   args: 
